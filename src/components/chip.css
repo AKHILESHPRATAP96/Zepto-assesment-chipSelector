@@ -51,7 +51,8 @@
   /* Input Container */
   .custom-input-container {
     width: 70%;
-    border-bottom: 2px solid blue;
+    border-bottom: 2px solid rgba(38, 40, 38, 0.479);
+    box-shadow: 1px 1px .1px 10;
     display: flex;
     flex-wrap: wrap;
     position: relative;

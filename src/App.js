@@ -1,11 +1,11 @@
-import logo from "./logo.svg";
 import "./App.css";
-import Chips from "./components/chip";
+
+import UserSelector from "./components/chip";
 
 function App() {
   return (
     <div className="App">
-      <Chips />
+      <UserSelector />
     </div>
   );
 }

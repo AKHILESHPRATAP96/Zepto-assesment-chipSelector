@@ -1,69 +1,60 @@
 import React, { useState, useRef } from 'react';
 import { HiX } from 'react-icons/hi';
-import profiles from './data';
+import UserData from './data';
 import "./chip.css"
-import img from "./assets/user.png"
+import UserImage from "./assets/user.png"
 
-const Chips = () => {
-    // State for search term, selected emails, selected item index, and already selected visibility
+const UserSelector = () => {
     const [searchTerm, setSearchTerm] = useState('');
-    const [selectedEmails, setSelectedEmails] = useState([]);
-    const [selectedItemIndex, setSelectedItemIndex] = useState(-1);
-    const dropdownRef = useRef(null); // Ref for dropdown container
-    const [isAlreadySelectedVisible, setIsAlreadySelectedVisible] = useState(false);
+    const [selectedUsers, setSelectedUsers] = useState([]);
+    const [selectedUserIndex, setSelectedUserIndex] = useState(-1);
+    const dropdownRef = useRef(null);
+    const [isUserAlreadySelectedVisible, setIsUserAlreadySelectedVisible] = useState(false);
 
-    // Function to handle email selection
-    const handleEmailSelect = (profile) => {
-        // Check if the profile is already selected
-        const isAlreadySelected = selectedEmails.some((selected) => selected.id === profile.id);
+    const handleUserSelect = (user) => {
+        const isAlreadySelected = selectedUsers.some((selected) => selected.id === user.id);
 
         if (!isAlreadySelected) {
-            // If not already selected, add to the selected emails
-            setSelectedEmails([...selectedEmails, profile]);
+            setSelectedUsers([...selectedUsers, user]);
             setSearchTerm('');
-            setSelectedItemIndex(-1);
+            setSelectedUserIndex(-1);
         } else {
-            // If already selected, show the message and hide it after 3 seconds
-            setIsAlreadySelectedVisible(true);
+            setIsUserAlreadySelectedVisible(true);
             setTimeout(() => {
-                setIsAlreadySelectedVisible(false);
+                setIsUserAlreadySelectedVisible(false);
             }, 1500);
         }
     };
 
-    // Function to handle email removal
-    const handleEmailRemove = (index) => {
-        const newEmails = [...selectedEmails];
-        newEmails.splice(index, 1);
-        setSelectedEmails(newEmails);
+    const handleUserRemove = (index) => {
+        const newUsers = [...selectedUsers];
+        newUsers.splice(index, 1);
+        setSelectedUsers(newUsers);
     };
 
-    // Function to handle keydown events for keyboard navigation
     const handleKeyDown = (e) => {
         switch (e.key) {
             case 'ArrowDown':
                 e.preventDefault();
-                setSelectedItemIndex((prevIndex) => Math.min(prevIndex + 1, filteredProfiles.length - 1));
+                setSelectedUserIndex((prevIndex) => Math.min(prevIndex + 1, filteredUserData.length - 1));
                 break;
             case 'ArrowUp':
                 e.preventDefault();
-                setSelectedItemIndex((prevIndex) => Math.max(prevIndex - 1, -1));
+                setSelectedUserIndex((prevIndex) => Math.max(prevIndex - 1, -1));
                 break;
             case 'Enter':
-                // If Enter is pressed, select the profile if an item is highlighted
-                if (selectedItemIndex !== -1) {
-                    handleEmailSelect(filteredProfiles[selectedItemIndex]);
+                if (selectedUserIndex !== -1) {
+                    handleUserSelect(filteredUserData[selectedUserIndex]);
                 }
                 break;
             default:
                 break;
         }
 
-        // Scroll the container to ensure the selected item is visible
-        if (selectedItemIndex !== -1 && dropdownRef.current) {
-            const selectedItem = dropdownRef.current.querySelector(`#profile-${selectedItemIndex}`);
-            if (selectedItem) {
-                selectedItem.scrollIntoView({
+        if (selectedUserIndex !== -1 && dropdownRef.current) {
+            const selectedUserItem = dropdownRef.current.querySelector(`#user-${selectedUserIndex}`);
+            if (selectedUserItem) {
+                selectedUserItem.scrollIntoView({
                     behavior: 'smooth',
                     block: 'nearest',
                 });
@@ -71,24 +62,21 @@ const Chips = () => {
         }
     };
 
-    // Filtered profiles based on the search term
-    const filteredProfiles = profiles.filter(
-        (profile) =>
-            profile.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-            profile.email.toLowerCase().includes(searchTerm.toLowerCase())
+    const filteredUserData = UserData.filter(
+        (user) =>
+            user.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+            user.email.toLowerCase().includes(searchTerm.toLowerCase())
     );
 
     return (
         <div className='custom-container'>
-            <div className='head'><img src={img} className='img' />
+            <div className='head'><img src={UserImage} className='img' />
                 <h1 className='custom-heading'> Users Selector</h1></div>
-            {/* Show already selected message if visible */}
-            {isAlreadySelectedVisible === true ? <h1 className='custom-error-message'>User Already Selected!</h1> : ''}
+            {isUserAlreadySelectedVisible === true ? <h1 className='custom-error-message'>User Already Selected!</h1> : ''}
             <div className='custom-flex-container'>
                 <div className="custom-input-container">
-                    {/* Display selected emails */}
-                    {selectedEmails.map((selected, index) => (
-                        <div key={index} className="custom-selected-email">
+                    {selectedUsers.map((selected, index) => (
+                        <div key={index} className="custom-selected-user">
                             <img
                                 src={selected.image}
                                 alt="Profile"
@@ -97,12 +85,11 @@ const Chips = () => {
                             <span>{selected.name}</span>
                             <HiX
                                 className="custom-remove-icon"
-                                onClick={() => handleEmailRemove(index)}
+                                onClick={() => handleUserRemove(index)}
                             />
                         </div>
                     ))}
                     <div className="custom-relative-container">
-                        {/* Input for adding new users */}
                         <input
                             type="text"
                             value={searchTerm}
@@ -111,28 +98,26 @@ const Chips = () => {
                             placeholder="Add new user..."
                             className="custom-input"
                         />
-                        {/* Display dropdown with filtered profiles */}
                         {searchTerm && (
                             <div
                                 ref={dropdownRef}
                                 className="custom-dropdown"
                             >
-                                {filteredProfiles.map((profile, index) => (
+                                {filteredUserData.map((user, index) => (
                                     <div
-                                        id={`profile-${index}`}
-                                        key={profile.id}
-                                        onClick={() => handleEmailSelect(profile)}
-                                        className={`custom-dropdown-item ${index === selectedItemIndex ? 'custom-dropdown-item-selected' : ''}`}
-                                        onMouseEnter={() => setSelectedItemIndex(index)}
+                                        id={`user-${index}`}
+                                        key={user.id}
+                                        onClick={() => handleUserSelect(user)}
+                                        className={`custom-dropdown-item ${index === selectedUserIndex ? 'custom-dropdown-item-selected' : ''}`}
+                                        onMouseEnter={() => setSelectedUserIndex(index)}
                                     >
                                         <img
-                                            src={profile.image}
+                                            src={user.image}
                                             alt="Profile"
                                             className="custom-dropdown-profile-image"
                                         />
-                                        {/* Display name and email */}
-                                        <h1>{profile.name}</h1>
-                                        <h1 className='custom-dropdown-email'>{`<${profile.email}>`}</h1>
+                                        <h1>{user.name}</h1>
+                                        <h1 className='custom-dropdown-email'>{`<${user.email}>`}</h1>
                                     </div>
                                 ))}
                             </div>
@@ -144,4 +129,4 @@ const Chips = () => {
     );
 };
 
-export default Chips;
+export default UserSelector;
