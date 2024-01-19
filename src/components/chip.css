@@ -1,55 +1,51 @@
-/* heading */
+
 .head {
     display: flex;
     justify-content: flex-start;
     align-items: center;
     flex-wrap: wrap;
-    padding: 1rem; /* Add padding for better spacing */
+    padding: 1rem;
     background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(127,62,86,0.43763301218925066) 53%, rgba(0,212,255,1) 100%);
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add a subtle box shadow for depth */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .img {
-    width: 10rem; /* Adjust the width as per your design */
-    height: auto; /* Maintain aspect ratio */
+    width: 10rem;
+    height: auto;
     margin-right: 1rem;
-    border-radius: 50%; /* Make the image circular */
+    border-radius: 50%;
 }
-/* Container */
+
 .custom-container {
     width: 100%;
     height: 100vh;
     border: 1px solid black;
-    background-color: #d2d6dc; /* Replace with your desired background color */
-    overflow: hidden; /* Hide overflow to prevent scroll bars */
-  }
-  
-  /* Heading */
-  .custom-heading {
+    background-color: #d2d6dc;
+    overflow: hidden;
+}
+
+.custom-heading {
     color: rgb(89, 131, 167);
     outline: #090909;
     text-align: center;
     font-weight: 600;
-   font-family:cursive;
+    font-family: cursive;
     font-size: 2rem;
     padding: 1rem;
-  }
-  
-  /* Error Message */
-  .custom-error-message {
+}
+
+.custom-error-message {
     text-align: center;
     font-size: 0.875rem;
     color: red;
-  }
-  
-  /* Flex Container */
-  .custom-flex-container {
+}
+
+.custom-flex-container {
     display: flex;
     justify-content: center;
-  }
-  
-  /* Input Container */
-  .custom-input-container {
+}
+
+.custom-input-container {
     width: 50%;
     border-bottom: 2px solid rgba(38, 40, 38, 0.479);
     box-shadow: 0px 2px 3px rgb(96, 103, 109);
@@ -57,67 +53,61 @@
     flex-wrap: wrap;
     position: relative;
     margin: 2rem auto;
-  }
-  
-  /* Selected Email */
-  .custom-selected-email {
+}
+
+.custom-selected-email {
     display: flex;
     align-items: center;
     justify-content: space-between;
     border-radius: 90px;
-    background-color: #e2e8f0; /* Replace with your desired background color */
+    background-color: #e2e8f0;
     padding: 0.25rem 0.5rem;
     margin: 0.25rem;
-  }
-  
-  .custom-selected-user {
+}
+
+.custom-selected-user {
     display: flex;
     align-items: center;
-    background-color: #e2e8f0; /* Replace with your desired background color */
-    border-radius: 8px; /* Adjust border-radius as needed */
-    padding: 8px; /* Adjust padding as needed */
-    margin: 4px; /* Adjust margin as needed */
+    background-color: #e2e8f0;
+    border-radius: 8px;
+    padding: 8px;
+    margin: 4px;
 }
 
 .custom-selected-user:hover {
-    background-color: #d2d6dc; /* Replace with your desired hover background color */
+    background-color: #d2d6dc;
 }
 
 .custom-profile-image {
-    width: 30px; /* Adjust width as needed */
-    height: 30px; /* Adjust height as needed */
-    border-radius: 50%; /* Make the image circular */
-    margin-right: 8px; /* Adjust margin as needed */
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    margin-right: 8px;
 }
 
 .custom-remove-icon {
-    color: #e53e3e; /* Replace with your desired text color */
+    color: #e53e3e;
     cursor: pointer;
-    margin-left: auto; /* Move the remove icon to the right */
+    margin-left: auto;
 }
-  
-  /* Relative Container */
-  .custom-relative-container {
+
+.custom-relative-container {
     position: relative;
     flex-grow: 1;
- 
     display: flex;
     justify-content: center;
     align-items: center;
-   
-  }
-  
-  /* Input */
-  .custom-input {
+}
+
+.custom-input {
     border: none;
     outline: none;
-    background-color: #d2d6dc; /* Replace with your desired background color */
+    background-color: #d2d6dc;
     padding: .5rem;
     width: 100%;
-  }
-  
-  /* Dropdown */
-  .custom-dropdown {
+}
+
+.custom-dropdown {
     position: absolute;
     max-height: 50vh;
     overflow-y: auto;
@@ -125,28 +115,27 @@
     overflow-x: hidden;
     right: 0;
     top: 100%;
-    background-color: #a49d9d68; /* Replace with your desired background color */
-    border: 1px solid #8b8d8f13; /* Replace with your desired border color */
-    border-radius: 0.375rem; /* Replace with your desired border-radius */
+    background-color: #a49d9d68;
+    border: 1px solid #8b8d8f13;
+    border-radius: 0.375rem;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-/* Dropdown Item */
 .custom-dropdown-item {
     cursor: pointer;
     padding: 0.5rem;
     display: flex;
     align-items: center;
     transition: background-color 0.3s;
-    width: 100%; 
-    
+    width: 100%;
 }
+
 .custom-dropdown-item:hover {
-    background-color: #edf2f7; /* Replace with your desired hover background color */
+    background-color: #edf2f7;
 }
 
 .custom-dropdown-item-selected {
-    background-color: #edf2f7; /* Replace with your desired selected background color */
+    background-color: #edf2f7;
 }
 
 .custom-dropdown-profile-image {
@@ -155,27 +144,27 @@
     border-radius: 50%;
     margin-right: 0.5rem;
 }
+
 .custom-dropdown-email {
     margin-left: auto;
     font-size: 0.875rem;
-    color: #4a5568; /* Replace with your desired text color */
+    color: #4a5568;
     overflow: hidden;
-    max-width: 100%; /* Allow the email to take up the full width */
-    box-sizing: border-box; /* Include padding and border in the total width */
+    max-width: 100%;
+    box-sizing: border-box;
 }
 
-/* Adjusted Font Size */
 .custom-dropdown h1 {
-    font-size: 0.875rem; /* Adjust font size as needed */
+    font-size: 0.875rem;
 }
 
 @media only screen and (max-width: 600px) {
     .custom-dropdown {
-        width: 100%; /* Take full width on small screens */
-        box-sizing: border-box; /* Include padding and border in the total width */
+        width: 100%;
+        box-sizing: border-box;
     }
 
     .custom-dropdown-item {
-        flex-direction: column; /* Stack items vertically */
+        flex-direction: column;
     }
 }
