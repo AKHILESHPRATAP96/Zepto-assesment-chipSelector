@@ -97,6 +97,7 @@ const UserSelector = () => {
                             onKeyDown={handleKeyDown}
                             placeholder="Add new user..."
                             className="custom-input"
+
                         />
                         {searchTerm && (
                             <div
@@ -117,7 +118,7 @@ const UserSelector = () => {
                                             className="custom-dropdown-profile-image"
                                         />
                                         <h1>{user.name}</h1>
-                                        <h1 className='custom-dropdown-email'>{`<${user.email}>`}</h1>
+                                        <h1 className='custom-dropdown-email'>{`${user.email}`}</h1>
                                     </div>
                                 ))}
                             </div>
